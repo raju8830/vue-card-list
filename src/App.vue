@@ -1,32 +1,57 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <!--NavBar Section -->
+  <navbar></navbar>
+    <!--Card Content Section -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <inventory @newItemAdded="addCartItem" :items="item"></inventory>
+        </div>
+        <!-- Card List Part-->
+        <div class="col-md-3 mt-4">
+          <card :items="card"></card>
+        </div>
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
+<script>
+import Navbar from "./components/Navbar";
+import Card from "./components/Card";
+import Inventory from "./components/Inventory";
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+import data from "./data";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  components:{
+    Navbar,
+    Card,
+    Inventory
+  },
+  data (){
+    return{
+      item: [],
+      card:[{
+        Id: 1,
+        title: "Test",
+        price: 10.14,
+        photo: "https://ritecaremedicalofficepc.com/wp-content/uploads/2019/09/img_avatar.png"
+      }]
+    }
+  },
+  mounted() {
+    this.item = data
+  },
+  methods:{
+    addCartItem(item){
+      this.card.push(item)
     }
   }
 }
+</script>
+
+<style lang="scss">
+
+
 </style>
