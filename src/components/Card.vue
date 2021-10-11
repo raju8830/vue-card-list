@@ -10,7 +10,7 @@
 
     <li v-for="(item, index) in items" :key="index" class="list-group-item">
       <span class="item-name">{{ item.title }}</span>
-      <span class="item-price float-end">{{ item.price }}</span>
+      <span class="item-price float-end">${{ item.price }}</span>
     </li>
 
     <hr>
@@ -25,14 +25,14 @@
 
 <script>
 export default {
-  props:['items'],
-  computed:{
-    totalPrice(){
-      var total = 0
+  props: ['items'],
+  computed: {
+    totalPrice() {
+      let total = 0
       this.items.forEach(item => {
         total += parseFloat(item.price)
       })
-      return total
+      return parseFloat(total).toFixed(2)
     }
   },
   name: "Card"

@@ -9,7 +9,7 @@
             {{ item.title }}
           </h2>
           <p class="card-text">
-            {{ item.price }}
+            {{ `${item.currency}${item.price}` }}
           </p>
           <a @click="addToCard(item)" class="btn btn-primary">Add +</a>
         </div>
