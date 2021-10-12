@@ -8,6 +8,9 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
+//
+// import VueRouter from 'vue-router'
+// Vue.use(VueRouter)
 
 new Vue({
   router,
